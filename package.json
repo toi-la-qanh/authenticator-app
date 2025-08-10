@@ -1,0 +1,40 @@
+{
+  "name": "authenticator-app",
+  "version": "1.0.0",
+  "description": "A self host authenticator app which can be used to generate and verfiy 2FA codes, and also store your own passwords",
+  "license": "MIT",
+  "author": "Quoc Anh Nguyen",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "dotenvx run -f .env.local -- tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "dotenvx run -f .env.production -- tsx src/index.ts"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.48.4",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "qrcode": "^1.5.4",
+    "redis": "^5.8.0",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.2.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/speakeasy": "^2.0.10",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  }
+}
