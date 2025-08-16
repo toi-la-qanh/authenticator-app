@@ -4,8 +4,7 @@
   "description": "A self host authenticator app which can be used to generate and verfiy 2FA codes, and also store your own passwords",
   "license": "MIT",
   "author": "Quoc Anh Nguyen",
-  "type": "module",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "dotenvx run -f .env.local -- tsx watch src/index.ts",
     "build": "tsc",
@@ -36,5 +35,8 @@
     "ts-node-dev": "^2.0.0",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

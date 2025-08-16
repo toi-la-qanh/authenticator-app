@@ -46,3 +46,5 @@ app.use('/api/otp', authRoutes);
 
 // Set the trust proxy for rate limit
 app.set("trust proxy", 3 /* number of proxies between user and server */);
+
+export default app;

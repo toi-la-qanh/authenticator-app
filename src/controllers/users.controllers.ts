@@ -86,14 +86,12 @@ export default class UserController {
 
         const { name, password } = req.body;
 
-        const userData = await client.get("user:" + name);
-        if (!userData) {
+        const userPassword = await client.get("user:" + name);
+        if (!userPassword) {
             return res.status(404).json({ errors: 'User not found' });
         }
 
-        const user = JSON.parse(userData);
-
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPasswordValid = await bcrypt.compare(password, userPassword);
 
         if (!isPasswordValid) {
             return res.status(400).json({ errors: 'Invalid password' });
