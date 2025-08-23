@@ -8,7 +8,7 @@ export default class PasswordController {
      * Get all passwords of a user from passwords storage
      */
     static async index(req: Request, res: Response) {
-        const userName = req.user?.name;
+        const userName = req.user;
         if (!userName) {
             return res.status(400).json({ errors: 'User name not found' });
         }
