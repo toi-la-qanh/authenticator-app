@@ -37,8 +37,8 @@ export default class AuthController {
         await body('secret')
             .isString()
             .withMessage('Secret must be a string')
-            .isLength({ min: 16, max: 32 })
-            .withMessage('Secret must be between 16 and 32 characters')
+            .isLength({ min: 16, max: 250 })
+            .withMessage('Secret must be between 16 and 250 characters')
             .matches(/^[A-Z2-7]+=*$/)
             .withMessage('Secret must be a valid Base32 string')
             .run(req);
