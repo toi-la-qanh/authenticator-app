@@ -6,7 +6,7 @@
   "author": "Quoc Anh Nguyen",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "dotenvx run -f .env.local -- tsx watch src/index.ts",
+    "dev": "dotenvx run -f .env.production -- tsx watch src/index.ts",
     "build": "tsc",
     "start": "dotenvx run -f .env.production -- tsx src/index.ts"
   },

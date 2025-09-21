@@ -35,19 +35,28 @@ export default class AuthController {
     static async add(req: Request, res: Response) {
         // Validate secret input
         await body('secret')
+            .notEmpty()
+            .trim()
+            .toUpperCase()
+            .withMessage('Secret is required')
             .isString()
             .withMessage('Secret must be a string')
-            .isLength({ min: 16, max: 250 })
-            .withMessage('Secret must be between 16 and 250 characters')
+            .isLength({ min: 16, max: 32 })
+            .withMessage('Secret must be between 16 and 32 characters')
             .matches(/^[A-Z2-7]+=*$/)
             .withMessage('Secret must be a valid Base32 string')
             .run(req);
 
         await body('name')
+            .notEmpty()
+            .trim()
+            .withMessage('Name is required')
             .isString()
             .withMessage('Name must be a string')
             .isLength({ min: 1, max: 50 })
             .withMessage('Name must be between 1 and 50 characters')
+            .matches(/^(?=.*[a-zA-Z].*[a-zA-Z])[a-zA-Z0-9\sà-ỹÀ-Ỵ]*$/)
+            .withMessage('Name not valid')
             .run(req);
 
         const errors = validationResult(req);
