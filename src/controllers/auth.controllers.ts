@@ -23,7 +23,7 @@ export default class AuthController {
         const secretNames = keys.map(key => key.split(':')[2]);
 
         return res.status(200).json({
-            data: { otpCodes: secretNames }
+            otpCodes: secretNames
         });
     }
 
@@ -41,10 +41,6 @@ export default class AuthController {
             .withMessage('Secret is required')
             .isString()
             .withMessage('Secret must be a string')
-            .isLength({ min: 16, max: 32 })
-            .withMessage('Secret must be between 16 and 32 characters')
-            .matches(/^[A-Z2-7]+=*$/)
-            .withMessage('Secret must be a valid Base32 string')
             .run(req);
 
         await body('name')
@@ -117,11 +113,9 @@ export default class AuthController {
         });
 
         return res.status(200).json({
-            data: {
-                otp: token,
-                name,
-                timeRemaining: 30 - (Math.floor(Date.now() / 1000) % 30)
-            }
+            otp: token,
+            name,
+            timeRemaining: 30 - (Math.floor(Date.now() / 1000) % 30)
         });
     }
 } 

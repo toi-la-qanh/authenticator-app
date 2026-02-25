@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import http from 'http';
-const PORT = Number(3001);
+const PORT = Number(process.env.PORT) || 3001; 
 const server = http.createServer(app);
 
 server.listen(PORT, "0.0.0.0", () => {
